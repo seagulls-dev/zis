@@ -1,0 +1,14 @@
+.label {
+  font-weight: bold;
+  font-size: large;
+  span, p {
+    font-weight: normal;
+  }
+}
+
+.role-list .ant-form-item-control {
+  height: 50vh;
+  overflow: auto;
+}
+
+

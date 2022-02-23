@@ -1,0 +1,20 @@
+@import 'variables.scss';
+
+.CompaniesTable {
+  .noCustomer {
+    background: $alert-light-color;
+  }
+  .label-bold {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  span {
+    font-weight: normal;
+  }
+}
+
+.expandCompaniesTable {
+  .ant-table-small {
+    margin-left: 0 !important;
+  }
+}

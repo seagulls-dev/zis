@@ -1,0 +1,132 @@
+@import-normalize;
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&subset=latin-ext');
+
+@import './variables';
+
+@import '~antd/dist/antd.css';
+@import '~antd-button-color/dist/css/style.css';
+
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.App {
+  display: flex;
+  min-height: 100vh;
+
+  .noWrap {
+    white-space: nowrap;
+  }
+
+  .App_inner {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    .centered {
+      text-align: center;
+    }
+  }
+
+  .text-uppercase {
+    text-transform: uppercase;
+  }
+
+  .ant-layout-sider.ant-layout-sider-dark,
+  .ant-menu-dark {
+    background-color: $blue-color !important;
+  }
+
+  .text-white {
+    color: $light-theme-color;
+  }
+
+  .inline {
+    display: flex;
+  }
+
+  .inline > * {
+    display: flex;
+  }
+
+  .alignCenter {
+    align-items: center;
+  }
+
+  .alignStart {
+    align-items: flex-start;
+  }
+
+  .alignEnd {
+    align-items: flex-end;
+  }
+
+  .justifyCenter {
+    justify-content: center;
+  }
+
+  .justifyAround {
+    justify-content: space-around;
+  }
+
+  .justifyBetween {
+    justify-content: space-between;
+  }
+
+  .justifyEnd {
+    justify-content: flex-end;
+  }
+
+  .justifyStart {
+    justify-content: flex-start;
+  }
+
+  .highlight {
+    animation: highlight 800ms ease-out;
+  }
+
+  @keyframes highlight {
+    0% {
+      background-color: rgba(255, 255, 0, 0.3);
+    }
+
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  .ant-table-tbody > .ant-table-row:hover > td {
+    background: rgba($green-color, 0.06);
+  }
+}
+
+.anticon.anticon-close.ant-modal-close-icon {
+  background: #fff;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+}
+
+.ant-modal-body {
+  max-height: 90vh;
+  overflow-y: scroll;
+}
+
+.zcom-error-message {
+  .ant-message-notice-content {
+    background: rgb(255, 200, 200);
+    border: 1px solid rgb(255, 0, 0);
+  }
+}
+
+.zcom-green {
+  background: $green-color;
+}
+
+.bg-primary {
+  background-color: $green-color; //#4190F7;
+}
+.SideNav .sideMenu {
+  overflow-y: visible!important;
+}

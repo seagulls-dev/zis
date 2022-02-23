@@ -1,0 +1,28 @@
+.CustomerServiceChildrensTree {
+  .ant-tree {
+    .ant-tree-checkbox {
+      .ant-tree-checkbox-inner {
+        width: 22px;
+        height: 22px;
+
+        &:after {
+          width: 10px;
+          height: 13px;
+        }
+      }
+    }
+  }
+  .treeBranch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .inputWrapper {
+      width: 180px;
+
+      .ant-form-item-explain {
+        display: none;
+      }
+    }
+  }
+}

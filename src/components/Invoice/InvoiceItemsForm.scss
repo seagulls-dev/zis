@@ -1,0 +1,154 @@
+.invoice_items {
+  width: 100%;
+
+  .itemBody {
+    display: flex;
+    width: 100%;
+    background: rgba(60, 140, 0, 0.05);
+
+    .ant-space-item {
+      &:nth-child(2) {
+        flex: 1;
+      }
+
+      &:nth-last-child(4),
+      &:nth-last-child(5) {
+        .ant-form-item-label {
+          padding-bottom: 3px;
+        }
+      }
+    }
+  }
+
+  .dynamic-delete-button {
+    color: #999;
+    cursor: pointer;
+    font-size: 24px;
+    margin: 0 8px;
+    position: relative;
+    top: 4px;
+    transition: all 0.3s;
+  }
+
+  .positionInput {
+    border: 0;
+    width: 2.5em;
+
+    &:hover {
+      .ant-input-number-handler-wrap {
+        display: none;
+      }
+    }
+  }
+
+  .ant-form-item-label {
+    text-align: center;
+  }
+
+  .positionInput {
+    background: transparent;
+    width: 3rem;
+    visibility: hidden;
+  }
+
+  .inputName {
+    max-width: 550px;
+    width: 100%;
+
+    &_textArea {
+      height: 48px;
+      width: 100%;
+    }
+  }
+
+  .inputFrom {
+    width: 145px;
+  }
+
+  .inputTo {
+    width: 145px;
+  }
+
+  .inputTax {
+    width: 100px;
+  }
+
+  .inputPerUnit {
+    width: 100px;
+    & input {
+      text-align: right;
+    }
+    .ant-input-number-handler-wrap {
+      display: none;
+    }
+  }
+
+  .inputUnitCount {
+    width: 80px;
+    & input {
+      text-align: right;
+    }
+    .ant-input-number-handler-wrap {
+      display: none;
+    }
+  }
+
+  .inputUnit {
+    width: 60px;
+  }
+
+  .inputNoVat {
+    width: 100px;
+    & input {
+      text-align: right;
+    }
+  }
+
+  .inputVat {
+    width: 100px;
+    & input {
+      text-align: right;
+    }
+  }
+
+  .inputTotal {
+    width: 100px;
+    & input {
+      text-align: right;
+    }
+  }
+
+  .inputHidden {
+    display: none;
+    margin-right: 0;
+  }
+
+  .addRowButton {
+    background: rgba(60, 140, 0, 0.1);
+    border-color: rgba(60, 140, 0, 0.1);
+    color: rgba(60, 140, 0, 0.8);
+    font-size: 0.8rem;
+    height: 30px;
+    margin-left: 48px;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    transition: 500ms ease-out;
+    width: 560px;
+
+    &:hover {
+      border-color: rgba(60, 140, 0, 0.4);
+      color: rgba(60, 140, 0, 0.6);
+      height: 40px;
+    }
+  }
+}
+
+.invoiceItemsTable {
+  th.right {
+    text-align: center;
+  }
+  .right {
+    text-align: right;
+  }
+}

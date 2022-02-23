@@ -1,0 +1,187 @@
+image: gitlab.zcom.cz:5005/zisv3/zis3-ci/builder-node:latest
+
+stages:
+  - build
+  - deploy
+  - docker_image
+
+variables:
+  DOMAIN_STAGE: 'zistest.zcom.cz'
+  DOMAIN_PROD: 'zis.zcom.cz'
+  DOCKER_HOST: tcp://thedockerhost:2375/
+  # Use the overlayfs driver for improved performance:
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ''
+
+cache:
+  paths:
+    - node_modules/
+
+build_stage:
+  stage: build
+  image: gitlab.zcom.cz:5005/zisv3/zis3-ci/builder-node:latest
+  environment:
+    name: stage
+    url: https://$DOMAIN_STAGE
+  tags:
+    - zis3-stage
+  variables:
+    ZIS_VERSION: $CORE_VERSION
+
+  before_script:
+    - eval $(ssh-agent -s)
+    - bash -c 'ssh-add <(echo "${SSH_GIT}")'
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - echo  -e "${SSH_GIT}" >> ~/.ssh/id_rsa
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+
+  script:
+    - whoami
+    - pwd
+    - python -V
+    - echo "ZIS_VERSION=$ZIS_VERSION"
+    # - git config --global user.email "ci-runner@zcom.cz"
+    # - git config --global user.name "ci-runner"
+    # - git reset --hard origin/$CI_COMMIT_BRANCH
+    # - chmod +x ci/set_fe_version.py; ./ci/set_fe_version.py $ZIS_VERSION;
+    # - chmod +x ci/get_fe_version.py; FE_VERSION=$(./ci/get_fe_version.py)
+    # - git add -f package.json
+    # - git commit -m "auto version [skip ci]"
+    # - git remote rm origin && git remote add origin git@gitlab.zcom.cz:zisv3/zis3-frontend.git
+    # - echo "git push origin HEAD:${CI_COMMIT_BRANCH}"
+    # - git push origin HEAD:$CI_COMMIT_BRANCH -o ci.skip
+    - yarn install --ignore-engines
+    - ls -la
+    - echo "Building the app.."
+    - CI=false yarn run build
+    - ls -la build
+    - mkdir artifacts
+    - cp -a build/. artifacts/
+    - echo "Build completed."
+  artifacts:
+    paths:
+      - artifacts
+    expire_in: 30 mins
+  when: always
+  only:
+    - stage
+
+build_prod:
+  stage: build
+  image: gitlab.zcom.cz:5005/zisv3/zis3-ci/builder-node:latest
+  environment:
+    name: production
+    url: https://$DOMAIN_PROD
+  tags:
+    - zis3-prod
+
+  before_script:
+    - yarn install --ignore-engines
+    - ls -la
+
+  script:
+    - whoami
+    - pwd
+    - echo "Building the app.."
+    - CI=false yarn run build
+    - ls -la
+    - ls -la build
+    - mkdir artifacts
+    - cp -a build/. artifacts/
+    - echo "Build completed."
+  artifacts:
+    paths:
+      - artifacts
+    expire_in: 30 mins
+  when: always
+  only:
+    - master
+
+deploy_on_stage:
+  stage: deploy
+  image: gitlab.zcom.cz:5005/zisv3/zis3-ci/deployer
+  tags:
+    - zis3-stage
+  environment:
+    name: stage
+    url: https://$DOMAIN_STAGE
+
+  before_script:
+    - eval $(ssh-agent -s)
+    - bash -c 'ssh-add <(echo "${SSH_DEPLOY_STAGE}")'
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-add -l
+
+  script:
+    - ls -l artifacts
+    - ssh -o StrictHostKeyChecking=no deployer@zistest-www.zcom.cz "cd /data/www/$DOMAIN_STAGE/front_end; sudo rm -rdf *"
+    - rsync -ra artifacts/. deployer@zistest-www.zcom.cz:/data/www/$DOMAIN_STAGE/front_end
+    - ssh -o StrictHostKeyChecking=no deployer@zistest-www.zcom.cz "cd /data/www/$DOMAIN_STAGE; chgrp -R www-data front_end"
+    - ssh -o StrictHostKeyChecking=no deployer@zistest-www.zcom.cz "cd /data/www/$DOMAIN_STAGE; sudo chmod +x public_html/build/post_deploy_fe.sh; bash public_html/build/post_deploy_fe.sh"
+    - echo "SUCCESS"
+
+  when: on_success
+  only:
+    - stage
+
+deploy_on_prod:
+  stage: deploy
+  dependencies:
+    - build_prod
+  image: gitlab.zcom.cz:5005/zisv3/zis3-ci/deployer
+  tags:
+    - zis3-prod
+  environment:
+    name: production
+    url: https://$DOMAIN_PROD
+
+  before_script:
+    - eval $(ssh-agent -s)
+    - bash -c 'ssh-add <(echo "${SSH_DEPLOY_PROD}")'
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - ssh-add -l
+
+  script:
+    - ls -l artifacts
+    - ssh -o StrictHostKeyChecking=no deployer@zis-www.zcom.cz "cd /data/www/$DOMAIN_PROD/front_end; sudo rm -rdf *"
+    - rsync -ra artifacts/. deployer@zis-www.zcom.cz:/data/www/$DOMAIN_PROD/front_end
+    - ssh -o StrictHostKeyChecking=no deployer@zis-www.zcom.cz "cd /data/www/$DOMAIN_PROD; chgrp -R www-data front_end"
+    - ssh -o StrictHostKeyChecking=no deployer@zis-www.zcom.cz "cd /data/www/$DOMAIN_PROD; sudo chmod +x public_html/build/post_deploy_fe.sh; bash public_html/build/post_deploy_fe.sh"
+    - echo "SUCCESS"
+
+  when: on_success
+  only:
+    - master
+
+create_docker_image:
+  stage: docker_image
+  image: docker:19.03.12
+  services:
+    - name: docker:dind
+      alias: thedockerhost
+  tags:
+    - zis3-docker
+  environment:
+    name: dev
+    url: http://localhost/login
+
+  before_script:
+    - ls -la artifacts
+    - mkdir -p php/build
+    - cp -a artifacts/. php/build/
+    - apk add --no-cache bash python3
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" "$CI_REGISTRY"
+    - docker info
+  script:
+    - cd php
+    - ls -la
+    - docker build --pull -t "$CI_REGISTRY_IMAGE" .
+    - docker push "$CI_REGISTRY_IMAGE"
+    - echo "SUCCESS"
+
+  when: manual
+  only:
+    - stage

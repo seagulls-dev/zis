@@ -1,0 +1,12 @@
+version: '3.5'
+services:
+
+  php:
+    # php-server image to run frontend on Apache
+    image: gitlab.zcom.cz:5005/zisv3/zis3-frontend:latest
+    # build:
+    #   dockerfile: Dockerfile
+    #   context: 'php'
+    container_name: zis3-frontend
+    ports:
+      - '80:80'

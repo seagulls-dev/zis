@@ -1,0 +1,17 @@
+@import 'variables.scss';
+
+.BillingPricelistPage {
+  .ant-table-expanded-row-level-1 {
+    & > td {
+      background: rgba($green-color, 0.07);
+    }
+    .ant-table-tbody > tr.ant-table-row:hover > td {
+      background: rgba($green-color, 0.04);
+    }
+    &:hover {
+      & > td {
+        background: rgba($green-color, 0.1);
+      }
+    }
+  }
+}

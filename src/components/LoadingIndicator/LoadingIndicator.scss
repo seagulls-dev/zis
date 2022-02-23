@@ -1,0 +1,16 @@
+.LoadingIndicator {
+  position: sticky;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25px;
+
+  img {
+    max-width: 100px;
+    max-height: 100px;
+    position: fixed;
+    z-index: 99;
+  }
+}

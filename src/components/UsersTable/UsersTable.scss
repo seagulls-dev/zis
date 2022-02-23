@@ -1,0 +1,18 @@
+.UsersTable {
+  .hide {
+    display: none;
+  }
+  .label-bold {
+    font-weight: bold;
+    margin-bottom: 0;
+  }
+  span {
+    font-weight: normal;
+  }
+  .mr-2 {
+    margin-right: 2rem;
+  }
+}
+.UsersTable th.show input {
+  margin-top: 10px;
+}

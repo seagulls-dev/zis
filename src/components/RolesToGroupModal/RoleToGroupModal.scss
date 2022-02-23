@@ -1,0 +1,26 @@
+.RoleToGroupModal {
+  .node {
+    display: flex;
+    justify-content: space-between;
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      min-width: 160px;
+      font-weight: bold;
+      // width: 100%;
+
+      .userCount {
+      }
+
+      .roleCount {
+      }
+
+      .buttons {
+        display: flex;
+        justify-content: space-between;
+        min-width: 50px;
+      }
+    }
+  }
+}

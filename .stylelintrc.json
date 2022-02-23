@@ -1,0 +1,26 @@
+{
+  "extends": "stylelint-config-sass-guidelines",
+  "rules": {
+    "indentation": 2,
+    "number-leading-zero": null,
+    "selector-class-pattern": null,
+    "selector-max-compound-selectors": 6,
+    "order/properties-alphabetical-order": null,
+    "declaration-block-semicolon-newline-after": null,
+    "declaration-colon-space-after": null,
+    "max-nesting-depth": [
+      6,
+      {
+        "ignore": ["blockless-at-rules", "pseudo-classes"]
+      }
+    ]
+  },
+  "ignoreFiles": [
+    "**/*.css",
+    "**/*.svg",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    "**/*.jsx"
+  ]
+}

@@ -1,0 +1,38 @@
+@import '../../../variables';
+
+.rackPositions {
+  .ant-form-item-label {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.RackPositionsTree {
+  border: 1px solid $grey-color;
+  padding: 20px 20px 20px 0;
+
+  .BlockTree {
+    border: 1px dotted $light-grey-color;
+    display: flex;
+    justify-content: center;
+
+    .secondary {
+      color: $light-grey-color;
+    }
+
+    &.Avail {
+      border-color: $green-dark-color;
+    }
+
+    &.Occupied {
+      background: lighten($color: $alert-color, $amount: 53);
+      border-color: $alert-color;
+    }
+  }
+}
+
+.RackOptionLabel {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,12 @@
+.InvoiceAttachment {
+  .ant-upload.ant-upload-select-picture-card {
+    float: unset;
+  }
+  .ant-upload-list-item-name {
+    color: dodgerblue;
+    text-decoration: underline;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

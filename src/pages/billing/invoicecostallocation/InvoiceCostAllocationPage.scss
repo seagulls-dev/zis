@@ -1,0 +1,10 @@
+.InvoiceCostAllocationsPage {
+  .priceInput {
+    & input {
+      text-align: right;
+    }
+    .ant-input-number-handler-wrap {
+      display: none;
+    }
+  }
+}

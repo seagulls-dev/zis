@@ -1,0 +1,77 @@
+@import 'variables.scss';
+
+.RangeFilter {
+  // display: flex;
+  // flex-direction: column;
+
+  // .ant-picker-clear {
+  //   opacity: 1;
+  //   color: darken($alert-color, 5%);
+  //   font-size: 1.4rem;
+
+  //   &:hover {
+  //     color: lighten($color: $alert-color, $amount: 10);
+  //   }
+  // }
+}
+
+.ant-picker-ranges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 6px;
+  row-gap: 4px;
+
+  & > li {
+    width: 24%;
+  }
+  & > li:nth-last-child(4n + 4) {
+    &:nth-child(n + 3) {
+      .ant-tag {
+        color: darken(cyan, 15%);
+        border-color: cyan;
+        background-color: rgba(cyan, 0.2);
+      }
+    }
+  }
+
+  & > li:nth-last-child(4n + 3) {
+    .ant-tag {
+      color: darken(darkseagreen, 15%);
+      border-color: darkseagreen;
+      background-color: rgba(darkseagreen, 0.3);
+    }
+  }
+  & > li:nth-last-child(4n + 2) {
+    .ant-tag {
+    }
+  }
+  & > li:nth-last-child(4n + 1) {
+    .ant-tag {
+      color: darken(darkgoldenrod, 5%);
+      border-color: darkgoldenrod;
+      background-color: rgba(darkgoldenrod, 0.2);
+    }
+  }
+
+  & > li {
+    &:last-child,
+    &:nth-last-child(2) {
+      .ant-tag {
+        color: darken(brown, 15%);
+        border-color: brown;
+        background-color: rgba(brown, 0.2);
+      }
+    }
+  }
+
+  .ant-picker-preset {
+    .ant-tag {
+      width: 100%;
+      text-align: center;
+      font-size: 1em;
+      padding: 5px 0;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+.AppFooter {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  &_container {
+    &_version {
+      color: lightgray;
+    }
+  }
+}

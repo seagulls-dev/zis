@@ -1,0 +1,52 @@
+@import 'variables.scss';
+
+.PricelistProductsPage {
+  th.priceCell {
+    text-align: inherit;
+  }
+
+  .priceCell {
+    // display: flex;
+    // justify-content: space-between;
+    text-align: right;
+
+    .Price {
+      color: $green-color;
+
+      .ellipsis {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow-x: hidden;
+        overflow-y: hidden;
+      }
+
+      &_Tag {
+        &_iconWrapper {
+          position: relative;
+          width: 23px;
+          height: 9px;
+          display: inline-block;
+
+          &_icon {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+          }
+        }
+
+        &_unit {
+        }
+      }
+      &_priceWrapper {
+        white-space: nowrap;
+
+        &_price {
+          font-weight: bold;
+        }
+        &_currency {
+        }
+      }
+    }
+  }
+}

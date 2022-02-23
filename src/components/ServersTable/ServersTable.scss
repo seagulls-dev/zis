@@ -1,0 +1,16 @@
+@import '../../variables';
+
+.ServersTable {
+  .ant-table-expanded-row-level-1 {
+    .ant-table-cell {
+      background: transparent;
+
+      .serverDescription {
+        table {
+          width: 100%;
+          border-collapse: collapse;
+        }
+      }
+    }
+  }
+}

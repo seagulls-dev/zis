@@ -1,0 +1,15 @@
+.LoginPage {
+  max-width: 900px;
+
+  &_action-line {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 20px;
+
+    .ant-form-item-control-input-content {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

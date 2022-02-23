@@ -1,0 +1,39 @@
+.BillVatSummary {
+  width: 730px;
+  &_Form {
+    &_Space {
+      max-width: 680px;
+
+      .ant-form-item {
+        // margin-bottom: 0;
+        label {
+          text-align: center;
+        }
+      }
+      .taxRateSelect {
+        width: 110px;
+      }
+      .totalWithoutVatInput {
+        width: 110px;
+      }
+      .totalVatInput {
+        width: 110px;
+      }
+      .totalWithVatInput {
+        width: 110px;
+      }
+      .roundingInput {
+        width: 110px;
+      }
+      .rounded {
+        background: rgba(darkcyan, 0.2);
+      }
+      .precisionInput {
+        width: 70px;
+      }
+      // input {
+      //   width: auto;
+      // }
+    }
+  }
+}

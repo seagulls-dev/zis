@@ -1,0 +1,60 @@
+.InvoiceMoreInfoForm {
+  background: rgba(0, 0, 255, 0.04);
+  padding-top: 24px;
+  padding-right: 24px;
+
+  &_periodBlock {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    &_periodInput {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      border-right: unset;
+    }
+
+    &_perionButton {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+
+  .generateCustomerServices {
+    &.large {
+      .ant-checkbox-inner {
+        width: 22px;
+        height: 22px;
+      }
+
+      label {
+        white-space: pre-line;
+        word-wrap: break-word;
+        word-spacing: 1em;
+        text-align: right;
+        height: auto;
+        max-width: 70px;
+        line-height: 1rem;
+      }
+
+      .ant-form-item-control {
+        justify-content: center;
+      }
+    }
+
+    &.large {
+      .ant-checkbox-checked {
+        .ant-checkbox-inner::after {
+          width: 10px;
+          height: 12px;
+        }
+      }
+    }
+  }
+
+  .periodInput {
+    input {
+      text-align: center;
+    }
+  }
+}

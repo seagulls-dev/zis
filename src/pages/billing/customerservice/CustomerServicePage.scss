@@ -1,0 +1,99 @@
+@import '../../../variables.scss';
+
+.CustomerServicePage {
+  .upgradedRow {
+    background: $blue-light-color;
+    color: $blue-font-color;
+  }
+  .finishedRow {
+    background: $grey-color;
+    color: $light-grey-color;
+  }
+  .childrenRow {
+    background: rgba($green-color, 0.1);
+  }
+  .ant-table-row-level-1 {
+    background: rgba($green-color, 0.1);
+
+    .customer-id-column {
+      color: transparent;
+    }
+    .ant-table-cell-with-append {
+      &:before {
+        content: 'L';
+        left: 44px;
+        top: 13px;
+        position: absolute;
+      }
+    }
+    .ant-table-cell {
+      display: table-cell;
+      border-collapse: collapse;
+      border: 1px dashed $green-light-color;
+      border-top: none;
+      border-right: none;
+      border-left: none;
+
+      &:not(:last-child) {
+        border-right: 1px dashed $green-light-color;
+      }
+      &:not(:first-child) {
+        border-left: 1px dashed $green-light-color;
+      }
+    }
+  }
+  .ant-table-row-level-2 {
+    background: rgba($green-color, 0.05);
+  }
+
+  .ellipsis {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .unit-column {
+    &_wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+
+      &_unit-count {
+        width: auto;
+        margin: 0 5px;
+        color: $green-color; //darkorange;
+
+        &_product-name {
+          line-height: 2rem;
+        }
+      }
+    }
+  }
+  .note,
+  .centered {
+    text-align: center;
+  }
+}
+
+.helpBlock {
+  div {
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+  }
+  .upgradedRow {
+    background: $blue-light-color;
+  }
+  .finishedRow {
+    background: $grey-color;
+  }
+  .childrenRow {
+    background: rgba($green-color, 0.1);
+  }
+  .legend {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+  }
+}

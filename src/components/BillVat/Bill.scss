@@ -1,0 +1,21 @@
+.Bill {
+  min-width: 460px;
+  min-height: 700px;
+  &_Form {
+    &_CompanySelect {
+      width: 280px !important;
+    }
+    &_NumberInput {
+      width: 280px;
+    }
+    &_CurrencySelect {
+      width: 280px !important;
+    }
+    &_DateInput {
+      width: 280px;
+    }
+    &_TotalInput {
+      width: 200px;
+    }
+  }
+}

@@ -1,0 +1,39 @@
+.InvoiceBottomForm {
+  .totalBlock {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-left: 1px solid rgba(#b22222, 0.1);
+    border-top: 1px solid rgba(#b22222, 0.1);
+
+    * {
+      margin: 0;
+    }
+
+    h3 {
+      background: rgba(#b22222, 0.05);
+      padding: 10px;
+      border-right: 1px solid rgba(#b22222, 0.1);
+      border-bottom: 1px solid rgba(#b22222, 0.1);
+    }
+
+    h2 {
+      padding: 6px;
+      background: rgba(#b22222, 0.2);
+    }
+
+    .text-right {
+      text-align: right;
+    }
+  }
+  .d-flex {
+    display: flex;
+    justify-content: space-between;
+  }
+  .download {
+    color: dodgerblue;
+    text-decoration: underline;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

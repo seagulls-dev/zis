@@ -1,0 +1,29 @@
+.InvoiceTopForm {
+  .inputWithButton {
+    display: flex;
+  }
+
+  .link {
+    text-decoration: underline;
+    font-weight: bold;
+  }
+
+  &_datesBlock {
+    &_extraCalendarButtons {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .ant-space-item {
+        button {
+          align-self: center;
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+
+  .InvoiceTopForm_datesBlock .f-bold input {
+    font-weight: bold;
+  }
+}

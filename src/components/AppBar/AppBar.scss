@@ -1,0 +1,22 @@
+@import '../../variables.scss';
+
+.AppBar {
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+
+  &.ant-layout-header {
+    height: 66px;
+  }
+
+  &.ant-layout-header,
+  .ant-menu-dark {
+    background-color: $blue-color !important;
+  }
+  &.light {
+    background: $light-theme-color !important;
+  }
+  .ant-menu-item-disabled {
+    cursor: default;
+    color: rgba(0, 0, 0, 0.6) !important;
+  }
+}

@@ -1,0 +1,38 @@
+.UserGroupTree {
+  height: 800px;
+  overflow-y: scroll;
+  .ant-tree-treenode {
+    width: 100%;
+
+    .ant-tree-node-content-wrapper {
+      width: 100%;
+
+      .ant-tree-title {
+        .node {
+          display: flex;
+          justify-content: space-between;
+
+          .actions {
+            display: flex;
+            margin-left: 15px;
+
+            a {
+              margin: 0 3px;
+            }
+            .userCount {
+              width: 80px;
+            }
+
+            .roleCount {
+              width: 80px;
+            }
+
+            .buttons {
+              width: 60px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

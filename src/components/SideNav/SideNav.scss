@@ -1,0 +1,65 @@
+@import '../../variables.scss';
+
+.SideNav {
+	min-height: 100vh;
+	height: 100%;
+	box-shadow: 3px 0 9px rgba(0, 0, 0, 0.1);
+
+	.sideMenu {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 0;
+		overflow-y: scroll;
+	}
+
+	.logo {
+		height: 52px;
+		margin: 16px;
+		&.dark {
+			background: center / contain no-repeat url('./img/logo_zcom_white.svg');
+		}
+		&.light {
+			background: center / contain no-repeat url('./img/logo_zcom.svg');
+		}
+	}
+
+	.sideMenu {
+		position: sticky;
+		top: 20px;
+	}
+
+	.ant-menu-item {
+		.iconLink {
+			display: inline-block;
+			width: 24px;
+		}
+	}
+	// .ant-menu-submenu-open {
+	//   .ant-menu-submenu-title {
+	//     .anticon {
+	//       color: $ant-blue-color;
+	//       + span {
+	//         color: $ant-blue-color;
+	//       }
+	//     }
+	//   }
+	// }
+
+	&.ant-layout-sider-collapsed {
+		.iconLink {
+			display: inline-block;
+			width: 50px;
+		}
+		.link {
+			display: none;
+		}
+		.logo {
+			&.dark {
+				background: center / contain no-repeat url('./img/logo_zcom_circle_white.svg');
+			}
+			&.light {
+				background: center / contain no-repeat url('./img/logo_zcom_circle.svg');
+			}
+		}
+	}
+}

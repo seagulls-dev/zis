@@ -1,0 +1,15 @@
+.AddCompnentForm {
+  padding: 20px 20px 0;
+  width: 500px;
+
+  .ant-select-selection-item-content {
+    small {
+      display: none;
+    }
+  }
+}
+
+.select-name-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
